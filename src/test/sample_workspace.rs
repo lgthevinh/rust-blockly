@@ -1,9 +1,29 @@
+use crate::blocks::arg::Arg;
+use crate::blocks::block_def::BlockDef;
 use crate::core::block::Block;
 use crate::core::block_field::{BField, BFieldType};
 use crate::core::block_input::{BInput, BInputType};
 use crate::core::variable::Var;
-use std::collections::HashMap;
 use crate::core::workspace::Workspace;
+use std::collections::HashMap;
+
+pub fn sample_blockdef() -> BlockDef {
+    BlockDef {
+        is_hat: false,
+        opcode: "gpio_digital_write".into(),
+        msg: "digital write %1 %2".into(),
+        args: vec![
+            Arg::InputValue {
+                name: "PIN".into(),
+                default: Some(BInputType::Int(13)),
+            },
+            Arg::FieldDropdown {
+                name: "STATE".into(),
+                options: vec![("HIGH".into(), "HIGH".into()), ("LOW".into(), "LOW".into())],
+            },
+        ],
+    }
+}
 
 pub fn sample_workspace() -> Workspace {
     Workspace {
@@ -82,6 +102,14 @@ fn digital_write(id: u32, state: &str, prev: u32, next: Option<u32>) -> Block {
         prev_bid: Some(prev),
         next_bid: next,
     }
+}
+
+#[test]
+fn blockdef_to_block() {
+    let mut block = sample_blockdef().to_block(2);
+    block.prev_bid = Some(1);
+    block.next_bid = Some(3);
+    assert_eq!(block, digital_write(2, "HIGH", 1, Some(3)));
 }
 
 #[test]

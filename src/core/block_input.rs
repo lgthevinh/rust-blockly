@@ -8,7 +8,7 @@ pub struct BInput {
 }
 
 
-#[derive(Debug, PartialEq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(tag = "input_type", content = "value")]
 pub enum BInputType {
     Block(u32),
