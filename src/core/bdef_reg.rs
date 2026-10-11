@@ -1,9 +1,6 @@
 use std::collections::HashMap;
 
-use crate::{
-    blocks::block_def::BlockDef,
-    core::block::{self, Block},
-};
+use crate::core::bdef::BlockDef;
 
 pub struct BlockRegistry {
     block_map: HashMap<String, BlockDef>,

@@ -1,10 +1,8 @@
-use crate::{
-    blocks::arg::Arg,
-    core::{
-        block::Block,
-        block_field::{BField, BFieldType},
-        block_input::BInput,
-    },
+use crate::core::{
+    bdef_arg::Arg,
+    block::Block,
+    block_field::{BField, BFieldType},
+    block_input::BInput,
 };
 
 #[derive(Debug, PartialEq)]

@@ -1,5 +1,5 @@
-use crate::blocks::arg::Arg;
-use crate::blocks::block_def::BlockDef;
+use crate::core::bdef_arg::Arg;
+use crate::core::bdef::BlockDef;
 use crate::core::block::Block;
 use crate::core::block_field::{BField, BFieldType};
 use crate::core::block_input::{BInput, BInputType};
