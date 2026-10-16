@@ -3,7 +3,7 @@ use crate::core::bdef::BlockDef;
 use crate::core::block::Block;
 use crate::core::block_field::{BField, BFieldType};
 use crate::core::block_input::{BInput, BInputType};
-use crate::core::variable::Var;
+use crate::core::var::Var;
 use crate::core::workspace::Workspace;
 use std::collections::HashMap;
 
@@ -106,7 +106,7 @@ fn digital_write(id: u32, state: &str, prev: u32, next: Option<u32>) -> Block {
 
 #[test]
 fn blockdef_to_block() {
-    let mut block = sample_blockdef().to_block(2);
+    let mut block = sample_blockdef().to_block(2, None, None);
     block.prev_bid = Some(1);
     block.next_bid = Some(3);
     assert_eq!(block, digital_write(2, "HIGH", 1, Some(3)));

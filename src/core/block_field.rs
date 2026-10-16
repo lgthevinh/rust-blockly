@@ -1,5 +1,9 @@
 use serde::{Deserialize, Serialize};
 
+/*
+    Block Field: a component for UI representation
+    This block 
+*/
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct BField {
     pub name: String,

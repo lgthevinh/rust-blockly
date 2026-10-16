@@ -14,7 +14,7 @@ pub struct BlockDef {
 }
 
 impl BlockDef {
-    pub fn to_block(&self, id: u32) -> Block {
+    pub fn to_block(&self, id: u32, prev_bid: Option<u32>, next_bid: Option<u32>) -> Block {
         let mut input = Vec::new();
         let mut field = Vec::new();
 
@@ -57,8 +57,8 @@ impl BlockDef {
             is_hat: self.is_hat,
             input: (!input.is_empty()).then_some(input),
             field: (!field.is_empty()).then_some(field),
-            prev_bid: None,
-            next_bid: None,
+            prev_bid: prev_bid,
+            next_bid: next_bid,
         }
     }
 
