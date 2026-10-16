@@ -1,8 +1,7 @@
 use serde::{Deserialize, Serialize};
 
-/*
-    Block Input
-*/
+/// Block Input: a named value slot that takes a literal or another block (`Block` holds its id).
+/// Lets blocks nest, so an expression block can feed its result into a parent block.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct BInput {
     pub name: String,

@@ -1,9 +1,7 @@
 use serde::{Deserialize, Serialize};
 
-/*
-    Block Field: a component for UI representation
-    This block 
-*/
+/// Block Field: a named value the user edits directly on the block (dropdown, text, checkbox, ...).
+/// Unlike an input, a field never holds another block. It is a fixed setting of the block itself.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct BField {
     pub name: String,
