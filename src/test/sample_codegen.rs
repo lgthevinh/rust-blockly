@@ -1,7 +1,5 @@
-use crate::core::bdef::BlockDef;
-use crate::core::bdef_arg::Arg;
-use crate::core::block_field::{BField, BFieldType};
-use crate::core::block_input::{BInput, BInputType};
+use crate::core::block::{BField, BFieldType, BInput, BInputType};
+use crate::core::block_def::{Arg, BlockDef};
 use std::collections::HashMap;
 
 use crate::core::{block::Block, codegen::Codegen, workspace::Workspace};

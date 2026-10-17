@@ -1,14 +1,40 @@
-use crate::core::{
-    bdef_arg::Arg,
-    block::Block,
-    block_field::{BField, BFieldType},
-    block_input::BInput,
-};
+use crate::core::block::{BField, BFieldType, BInput, BInputType, Block};
+
+#[derive(Debug, PartialEq)]
+pub enum Arg {
+    FieldDropdown {
+        name: String,
+        options: Vec<(String, String)>,
+    },
+    FieldText {
+        name: String,
+        default: String,
+    },
+    FieldNumber {
+        name: String,
+        default: f64,
+    },
+    FieldCheckbox {
+        name: String,
+        default: bool,
+    },
+    FieldVariable {
+        name: String,
+    },
+    InputValue {
+        name: String,
+        default: Option<BInputType>,
+    },
+    InputStatement {
+        name: String,
+    },
+    InputDummy,
+}
 
 #[derive(Debug, PartialEq)]
 pub struct BlockDef {
-    pub opcode: String,
-    pub msg: String,
+    pub opcode: &'static str,
+    pub msg: &'static str,
     pub args: Vec<Arg>,
     pub is_hat: bool,
 }
@@ -53,7 +79,7 @@ impl BlockDef {
 
         Block {
             id,
-            op_code: self.opcode.clone(),
+            op_code: self.opcode.to_string(),
             is_hat: self.is_hat,
             input: (!input.is_empty()).then_some(input),
             field: (!field.is_empty()).then_some(field),

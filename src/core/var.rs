@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::core::block_input::BInputType;
+use crate::core::block::BInputType;
 
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Var {
